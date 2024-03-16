@@ -20,12 +20,16 @@ The key takeaway is to understand basic concepts of data types and data structur
 I am building a number guessing game in which a player has to guess a number between 1 and 100. As a personal goal this is a set of features I am to implement in my game:
 
 - 1. Number generator
+
     Create a random number generator.
 - 2. User input
+
     Create a way to allow users to keep guessing until the winning number is guessed. 
 - 3. Score system
+
     I want to create a score system. I came to this idea mostly with the wish that down the line I would host the game on a webpage for others to play. Score will be tracked which should prompt users to play.
 - 4. Leaderboards
+
     In order to make sense of the scoring system I will need to create leaderboards which will need to store user data, compare user data and sort it accordingly. I believe this will be the biggest challenge in the project as I only have a vague idea how to tackle this issue.
 
 
