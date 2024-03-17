@@ -1,6 +1,6 @@
 import game_library as gl
 
-#generating a list of possibilities
+# generating a list of possibilities
 
 possibilities = []
 for i in range(1, 101):
@@ -8,9 +8,7 @@ for i in range(1, 101):
 
 winning_number = gl.target_number(possibilities)
 
-#building user input and results
-
-#assigning a guess anc checking if the number is correct
+# assigning a guess and checking if the guess is correct
 while True:
     guess = gl.user_guess()
     active = gl.check_results(guess, winning_number)
