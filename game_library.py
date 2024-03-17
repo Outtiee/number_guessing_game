@@ -3,7 +3,7 @@ from random import choice
 
 
 
-#creating necessary methods
+# creating necessary methods to play the game
 
 def target_number(possibilites):
     """Generates a random number"""
