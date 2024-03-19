@@ -1,20 +1,7 @@
 import game_library as gl
 import json
 
-# loading user data
-
-with open("userbase.json", "r") as file:
-    database = json.load(file)
-
 username = input("Hello. What is your username? ")
-
-for user in database:
-    if database["username"] == username:
-        print(f"Welcome back {username}")
-    else:
-        user = gl.User(username)
-database[f"{user.username}"] = user.score
-
 
 # generating a list of possibilities
 possibilities = []
@@ -24,9 +11,9 @@ winning_number = gl.target_number(possibilities)
 attempts = 1
 score = 10_000
 
-# assigning a guess and checking if the guess is correct
+# prompting a guess, checking if it is correct and altering the score accordingly
 while True:
-    guess = gl.user_guess()
+    guess = input("I'm guessing you're thinking about the number ")
     active = gl.check_results(guess, winning_number)
     if active == False:
         break
@@ -36,8 +23,7 @@ while True:
     else:
         continue
 
+
+
 print(f"\n\tNumber of attempts: {attempts}"
       f"\n\t Your score: {score}")
-
-with open("userbase.json", "w+") as file:
-    json.dump(database, file)

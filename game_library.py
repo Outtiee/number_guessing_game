@@ -7,6 +7,11 @@ class User:
     def __init__(self, username, score=0):
         self.username = username
         self.score = score
+        self.temp_dict = {}
+        self.temp_dict[self.username] = self.score
+
+
+
 
 # creating necessary methods to play the game
 
@@ -15,13 +20,6 @@ def target_number(possibilites):
     winning_number = choice(possibilites)
     print("Can you guess the number I am thinking of between 1 and 100?")
     return winning_number
-
-
-def user_guess():
-    """Prompts user to make a guess and return the value
-    of the guess"""
-    guess = input("I'm guessing you're thinking about the number ")
-    return guess
 
 
 def check_results(guess, winning_number):
