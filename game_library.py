@@ -5,13 +5,13 @@ from random import choice
 
 class User:
     def __init__(self, username, score=0):
-        self.username = username
+        self.username = username    
         self.score = score
-        self.temp_dict = {}
-        self.temp_dict[self.username] = self.score
-
-
-
+    def add_user(self):
+        user_data = {}
+        user_data["username"] = self.username
+        user_data["score"] = self.score
+        return user_data
 
 # creating necessary methods to play the game
 
