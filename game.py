@@ -1,38 +1,38 @@
 import game_library as gl
 import json
 
-username = input("Hello. What is your username? ")
+username = input("Hello. What is your username? ").lower()
 
-user_list = [{"username": "admin", "score": 0}]
+with open("userbase.json", "r") as file:
+    data = json.load(file)
+user_list = data
 
-# need to create read-write json to store user data
-
+# check if user exists, if not create a new one
 
 for user in user_list:
-    """Loops through the list of users, if the user exists assign
-    it to a variable curr_user, if not create a user, add it to the list
-    and assign it's dictionary to the curr_user variable"""
-    if str(user["username"]).lower() == username.lower():
-        print("Welcome back") # need to change to a diff message
-        curr_user = user # assigning a dictionary to be able to update the values later
+    if username in user["username"]:
+        curr_user = user
         break
     else:
-        curr_user = gl.User(username)
-        user_list.append(curr_user.add_user())
-        curr_user = curr_user.add_user() # assigning a dictionary to be able to update the values later
-        print("Welcome") # need to change to a diff message
-        break
+        curr_user = gl.User(username).add_user()
+        
 
+if curr_user not in user_list:
+    print(f"Welcome {username}!")
+    user_list.append(curr_user)
+else:
+    print(f"Welcome back {username}")
+    print(f"Current high score: {curr_user["score"]}")
 
 # generating a list of possibilities
 possibilities = []
-for i in range(1): # current state for easier testing
+for i in range(1, 101): 
     possibilities.append(i)
 winning_number = gl.target_number(possibilities)
 attempts = 1
 score = 10_000
 
-# prompting a guess, checking if it is correct and altering the score accordingly
+# guess loop and altering the score accordingly
 while True:
     guess = input("I'm guessing you're thinking about the number ")
     active = gl.check_results(guess, winning_number)
@@ -44,7 +44,20 @@ while True:
     else:
         continue
 
-# create a check of current score, if higher assign new high score
+# checking whether new result is a high score
+    
+if curr_user["score"] < score:
+    print(f"Congratulations, you got a new high score!")
+    print(f"\tNew high score: {score}")        
+    index = user_list.index(curr_user)
+    user_list[index] = {"username": username, "score": score}
 
+print("\nGame results: ")
 print(f"\n\tNumber of attempts: {attempts}"
       f"\n\t Your score: {score}")
+
+
+data = json.dumps(user_list)
+with open("userbase.json", "w") as file:
+    file.write(data)
+    file.close()
