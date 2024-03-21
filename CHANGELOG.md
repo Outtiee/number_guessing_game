@@ -11,3 +11,7 @@
 - added a method to create a dictionary with user data in User class(game_library.py, lines: 10-14)
 - wrote a loop that checks if user already exists, if it doesn't create a new user (gam.py, lines: 11-24)
 - removed guess method from User class, implemented it directly in the main code (game.py, line: 37)
+
+[ 2024-03-21 ]
+- fixed the user checking process (game.py, lines: 12-17)
+- added a print messages to welcome users (game.py, lines: 20-25) 
