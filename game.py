@@ -22,7 +22,7 @@ if curr_user not in user_list:
     user_list.append(curr_user)
 else:
     print(f"Welcome back {username}")
-    print(f"Current high score: {curr_user["score"]}")
+    print(f"Current high score: {curr_user['score']}")
 
 
 
@@ -75,7 +75,9 @@ match action:
         print(f"\n\tNumber of attempts: {attempts}"
             f"\n\t Your score: {score}")
     case "2":
-        print(f"\n{user["username"]}: {user["score"]}")
+        sorted_scores = sorted(user_list, key=lambda d: d["score"], reverse=True)
+        for user in sorted_scores:
+            print(f"\n{user['username']}: {user['score']}")
     case "3":
         quit()
 
